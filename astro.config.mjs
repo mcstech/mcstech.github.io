@@ -3,6 +3,6 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://mcstech.github.io',
+  site: 'https://mcstech.dev',
   base: '/',
 });
