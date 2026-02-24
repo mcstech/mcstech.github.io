@@ -17,6 +17,22 @@ Rock Paper is a calm, editorial template for interior design studios and indepen
 - Clear routes for *Projects* and *Services*
 - Content collections for *projects*, *team*, *services* and more
 
+### What's Included
+- Background Videos
+- Blog Tags
+- Reusable Components
+- Optional CMS via PagesCMS
+- Global Search
+- Content Collections
+- SEO Optimized
+- Ongoing Updates
+- Style Guide
+- Tailwind CSS Forms
+- Tailwind Typography
+- Lifetime access
+- Lifetime updates
+- Lifetime support
+
 ### Layout & Structure
 
 Rock Paper balances imagery and type with a steady rhythm. Case studies highlight goals, approach, materials, and results.
