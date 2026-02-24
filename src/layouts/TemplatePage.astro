@@ -1,49 +1,29 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import previewMain from '../../assets/templates/rockpaper/preview-1.png';
-import previewAlt from '../../assets/templates/rockpaper/preview-2.png';
+import Layout from './Layout.astro';
+import { templatePreviews } from '../data/templatePreviews';
 
-const heroScreenshot = 'https://github.com/user-attachments/assets/0109deed-2aae-4d84-ad30-5e1d82a31aae';
+const frontmatter = Astro.props.frontmatter ?? {};
 
-const featureList = [
-	'Background video hero with layered call-to-actions',
-	'Editorial project templates with goals, approach, and materials',
-	'Service index with comparison-ready summaries',
-	'Studio story page to highlight team, method, and principles',
-	'Embla carousel-ready galleries',
-	'Global search with rich previews',
-	'Content collections for projects, services, team, and posts',
-	'SEO-ready metadata with sensible defaults',
-	'Reusable section patterns (hero, stats, timelines, FAQ)',
-	'Blog tagging and filtering patterns',
-	'Tailwind Forms & Typography presets',
-	'Optional PagesCMS wiring for quick content edits',
-	'Lightweight motion with CSS transitions only',
-	'Lifetime updates and support included'
+const title = frontmatter.title ?? Astro.props.title ?? 'Template';
+const subtitle = frontmatter.subtitle ?? Astro.props.subtitle ?? '';
+const heroScreenshot = frontmatter.heroScreenshot ?? Astro.props.heroScreenshot;
+const templateKey = frontmatter.templateKey ?? Astro.props.templateKey ?? 'template';
+const badge = frontmatter.badge ?? Astro.props.badge ?? 'Template';
+const stack = frontmatter.stack ?? Astro.props.stack ?? '';
+const styles = frontmatter.styles ?? Astro.props.styles ?? '';
+const license = frontmatter.license ?? Astro.props.license ?? '';
+const featureList = frontmatter.featureList ?? Astro.props.featureList ?? [];
+const faqs = frontmatter.faqs ?? Astro.props.faqs ?? [];
+const highlights = frontmatter.highlights ?? Astro.props.highlights ?? [
+	'Performance-first layouts',
+	'WCAG-aware contrast',
+	'No client frameworks'
 ];
+const previewMain = frontmatter.previewMain ?? Astro.props.previewMain ?? '';
+const previewSecondary = frontmatter.previewSecondary ?? Astro.props.previewSecondary ?? '';
 
-const faqs = [
-	{
-		question: 'Is Rock Paper compatible with Fresh Deno and Tailwind CSS 4?',
-		answer:
-			'Yes. The template is authored against Fresh Deno v2.2.0 and Tailwind CSS v4.2, with no client framework dependencies.'
-	},
-	{
-		question: 'Can I extend components without breaking the layout?',
-		answer:
-			'Blocks are built with semantic HTML, logical spacing tokens, and utility classes. Duplicate sections, swap imagery, and adjust copy without touching brittle CSS.'
-	},
-	{
-		question: 'Do I need JavaScript for the FAQ or layout?',
-		answer:
-			'No. The FAQ uses plain HTML structure. Motion is limited to CSS transitions and respects reduced-motion preferences.'
-	},
-	{
-		question: 'What files do I receive?',
-		answer:
-			'You get the Astro source, Tailwind styles, content collection examples, and starter CMS wiring so you can deploy or adapt immediately.'
-	}
-];
+const resolvedPreviewMain = previewMain || templatePreviews[templateKey]?.main || '';
+const resolvedPreviewSecondary = previewSecondary || templatePreviews[templateKey]?.secondary || '';
 ---
 
 <Layout>
@@ -54,15 +34,10 @@ const faqs = [
 				<div class="space-y-6">
 					<p class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 text-xs text-white tracking-[0.16em]">
 						<span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-						Rock Paper — Fresh Deno + Tailwind
+						{badge}
 					</p>
-					<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">
-						Calm, editorial design system for modern interior studios.
-					</h1>
-					<p class="max-w-2xl text-lg text-slate-600">
-						An intentionally minimal template that pairs generous whitespace with confident type. Ship case
-						studies, services, and studio principles without touching custom JavaScript.
-					</p>
+					<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h1>
+					<p class="max-w-2xl text-lg text-slate-600">{subtitle}</p>
 					<div class="flex flex-wrap items-center gap-3">
 						<a
 							class="rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/10 transition hover:-translate-y-0.5 hover:shadow-xl"
@@ -78,73 +53,59 @@ const faqs = [
 					<div class="grid gap-4 sm:grid-cols-3">
 						<div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
 							<p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Stack</p>
-							<p class="mt-1 text-base font-semibold text-slate-900">Fresh Deno v2.2.0</p>
+							<p class="mt-1 text-base font-semibold text-slate-900">{stack}</p>
 						</div>
 						<div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
 							<p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Styles</p>
-							<p class="mt-1 text-base font-semibold text-slate-900">Tailwind CSS v4.2</p>
+							<p class="mt-1 text-base font-semibold text-slate-900">{styles}</p>
 						</div>
 						<div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
 							<p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">License</p>
-							<p class="mt-1 text-base font-semibold text-slate-900">Lifetime, one-time</p>
+							<p class="mt-1 text-base font-semibold text-slate-900">{license}</p>
 						</div>
 					</div>
 				</div>
-				<figure class="relative">
-					<div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-slate-900/15">
-						<img
-							src={heroScreenshot}
-							loading="lazy"
-							decoding="async"
-							alt="Rock Paper template page preview"
-							class="w-full object-cover" />
-					</div>
-					<div
-						class="absolute -bottom-8 left-6 rounded-2xl border border-white/70 bg-slate-900 px-4 py-3 text-xs text-white shadow-lg shadow-slate-900/20">
-						<p class="font-semibold">Screenshot included</p>
-						<p class="text-slate-200">Supplied preview embedded directly in this page.</p>
-					</div>
-				</figure>
+				{heroScreenshot && (
+					<figure class="relative">
+						<div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-slate-900/15">
+							<img src={heroScreenshot} loading="lazy" decoding="async" alt={`${title} preview`} class="w-full object-cover" />
+						</div>
+						<div
+							class="absolute -bottom-8 left-6 rounded-2xl border border-white/70 bg-slate-900 px-4 py-3 text-xs text-white shadow-lg shadow-slate-900/20">
+							<p class="font-semibold">Screenshot included</p>
+							<p class="text-slate-200">Supplied preview embedded directly in this page.</p>
+						</div>
+					</figure>
+				)}
 			</div>
 		</header>
 
 		<section class="mx-auto max-w-6xl px-6 py-12">
 			<div class="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
 				<div class="space-y-6">
-					<h2 class="text-2xl font-semibold text-slate-900">Purpose-built for thoughtful studios</h2>
-					<p class="text-base text-slate-600">
-						Rock Paper balances imagery and typography with a steady rhythm. Case studies highlight goals,
-						approach, materials, and results. Service pages explain value without fluff, while the studio
-						page shares the people, method, and principles that set you apart.
-					</p>
-					<div class="grid gap-4 sm:grid-cols-2">
-						<div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-							<h3 class="text-lg font-semibold text-slate-900">Editorial layouts</h3>
-							<p class="mt-2 text-sm text-slate-600">
-								Story-driven templates with flexible grids, accent captions, and balanced white space.
-							</p>
-						</div>
-						<div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-							<h3 class="text-lg font-semibold text-slate-900">Production-ready</h3>
-							<p class="mt-2 text-sm text-slate-600">
-								Semantic HTML, alt-tagged imagery, and WCAG-aware contrast make launch approvals easier.
-							</p>
-						</div>
-					</div>
+					<slot />
 				</div>
 				<div class="rounded-3xl border border-slate-200 bg-white/80 p-5 shadow-lg shadow-slate-900/5">
 					<h3 class="text-lg font-semibold text-slate-900">Preview gallery</h3>
 					<p class="mt-2 text-sm text-slate-600">
-						Focused views of the Rock Paper experience—from immersive hero areas to structured detail
-						sections.
+						Focused views of the experience—from immersive hero areas to structured detail sections.
 					</p>
 					<div class="mt-4 grid gap-4 sm:grid-cols-2">
-						<div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
-							<img src={previewMain.src} alt="Rock Paper homepage preview" class="w-full object-cover" loading="lazy" decoding="async" />
-						</div>
-						<div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
-							<img src={previewAlt.src} alt="Rock Paper interior page preview" class="w-full object-cover" loading="lazy" decoding="async" />
-						</div>
+						{resolvedPreviewMain && (
+							<div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
+								<img src={resolvedPreviewMain} alt={`${title} homepage preview`} class="w-full object-cover" loading="lazy" decoding="async" />
+							</div>
+						)}
+						{resolvedPreviewSecondary && (
+							<div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
+								<img
+									src={resolvedPreviewSecondary}
+									alt={`${title} interior page preview`}
+									class="w-full object-cover"
+									loading="lazy"
+									decoding="async" />
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
@@ -179,9 +140,8 @@ const faqs = [
 					<p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Technology</p>
 					<h2 class="mt-2 text-2xl font-semibold text-slate-900">Modern stack, no bloat</h2>
 					<p class="mt-2 text-base text-slate-600">
-						Rock Paper is built with the latest stable releases of Fresh Deno and Tailwind CSS. Embla is
-						available for carousels, but the page experiences are fully functional without additional
-						scripts.
+						Built with the latest stable releases. Optional carousel support available, but the page
+						experiences are fully functional without additional scripts.
 					</p>
 					<div class="mt-4 grid gap-4 sm:grid-cols-2">
 						<div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
@@ -237,3 +197,14 @@ const faqs = [
 		</section>
 	</main>
 </Layout>
+
+<style>
+	@media (prefers-reduced-motion: reduce) {
+		* {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
+</style>
