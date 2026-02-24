@@ -1,9 +1,12 @@
 ---
-layout: ../../layouts/TemplatePage.astro
 title: Rock Paper — Fresh Deno + Tailwind
 subtitle: Calm, editorial design system for modern interior studios.
 heroScreenshot: https://github.com/user-attachments/assets/0109deed-2aae-4d84-ad30-5e1d82a31aae
 templateKey: rockpaper
+badge: Fresh Deno + Tailwind
+stack: Fresh Deno v2.2.0
+styles: Tailwind CSS v4.2
+license: Lifetime, one-time
 featureList:
   - Background video hero with layered call-to-actions
   - Editorial project templates with goals, approach, and materials
