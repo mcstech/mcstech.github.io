@@ -23,6 +23,17 @@ Rock Paper balances imagery and type with a steady rhythm. Case studies highligh
 
 Service pages explain value without fluff. The studio page tells the story: people, method, and principles.
 
+### Technology
+
+Our templates are thoughtfully crafted with the latest and greatest versions of the tools we love so that they are easy to maintain, and actually fun to work on.
+
+Fresh Deno v2.2.0
+Tailwind CSS v4.2
+Embla Carousel
+
 **One-time license — lifetime value**
 
 Buy once. Use forever. Launch your interior design studio with clarity and restraint
+
+### FAQ
+
