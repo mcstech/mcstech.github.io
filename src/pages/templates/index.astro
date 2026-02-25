@@ -1,0 +1,203 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const templates = await getCollection('templates');
+
+const galleryImage =
+	'https://github.com/user-attachments/assets/e2f98dcc-8b79-4827-9614-827a744b93da';
+---
+
+<Layout>
+	<main class="min-h-screen bg-slate-50 text-slate-900">
+		<header class="relative overflow-hidden border-b border-slate-200 bg-white/80 backdrop-blur">
+			<div
+				class="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-100 via-white to-indigo-100"
+				aria-hidden="true"></div>
+			<div class="relative mx-auto grid max-w-6xl items-center gap-10 px-6 py-16 lg:grid-cols-2">
+				<div class="space-y-6">
+					<p class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 text-xs text-white tracking-wide">
+						<span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+						Template gallery
+					</p>
+					<h1 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+						Modern website templates crafted with Tailwind CSS.
+					</h1>
+					<p class="max-w-xl text-lg text-slate-600">
+						Flexible, opinionated layouts you can ship the same day. Clean markup, accessible components,
+						and layered styles designed for focused digital storytelling.
+					</p>
+					<div class="flex flex-wrap items-center gap-3">
+						<a
+							class="rounded-full bg-slate-900 px-5 py-3 text-sm font-medium text-white shadow-lg shadow-slate-900/10 transition hover:-translate-y-0.5 hover:shadow-xl"
+							href="/templates/rock-paper">
+							View Rock Paper
+						</a>
+						<a
+							class="rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-medium text-slate-800 transition hover:-translate-y-0.5 hover:border-slate-400"
+							href="#templates">
+							Browse all templates
+						</a>
+					</div>
+					<dl class="grid grid-cols-2 gap-4 text-sm text-slate-600 sm:grid-cols-3">
+						<div class="space-y-1 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+							<dt class="text-xs uppercase tracking-[0.08em] text-slate-500">Stack</dt>
+							<dd class="font-semibold text-slate-900">Astro & Tailwind</dd>
+						</div>
+						<div class="space-y-1 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+							<dt class="text-xs uppercase tracking-[0.08em] text-slate-500">Delivery</dt>
+							<dd class="font-semibold text-slate-900">Instant download</dd>
+						</div>
+						<div class="space-y-1 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+							<dt class="text-xs uppercase tracking-[0.08em] text-slate-500">License</dt>
+							<dd class="font-semibold text-slate-900">One-time, lifetime</dd>
+						</div>
+					</dl>
+				</div>
+				<figure class="relative">
+					<div
+						class="rounded-3xl border border-slate-200 bg-white/80 shadow-2xl shadow-slate-900/10 ring-1 ring-white/60">
+						<img
+							src={galleryImage}
+							loading="lazy"
+							decoding="async"
+							alt="Gallery of available Tailwind templates"
+							class="h-full max-h-[720px] w-full rounded-3xl object-cover" />
+					</div>
+					<div
+						class="absolute -bottom-10 left-6 hidden w-40 rounded-2xl border border-white/70 bg-slate-900 px-4 py-3 text-xs text-white shadow-lg shadow-slate-900/20 sm:block">
+						<p class="font-semibold">Two-column FAQs</p>
+						<p class="text-slate-200">Built with pure HTML and thoughtful spacing.</p>
+					</div>
+				</figure>
+			</div>
+		</header>
+
+		<section id="templates" class="mx-auto max-w-6xl px-6 py-14">
+			<div class="flex items-start justify-between gap-4">
+				<div>
+					<p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Templates</p>
+					<h2 class="mt-2 text-2xl font-semibold text-slate-900">Available layouts with previews</h2>
+					<p class="mt-2 max-w-2xl text-base text-slate-600">
+						Elevated visuals, balanced typography, and components mapped to real-world use cases. Every
+						template includes documentation, reusable sections, and content patterns to help you launch
+						faster.
+					</p>
+				</div>
+				<a
+					href="/templates/rock-paper"
+					class="hidden rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-800 transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-sm md:inline-flex">
+					View details
+				</a>
+			</div>
+
+			<div class="mt-8 grid gap-6 md:grid-cols-2">
+				{templates.map((template) => (
+					<article
+						class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+						<div class="flex items-center justify-between border-b border-slate-100 px-5 py-4">
+							<div>
+								<p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+									Studios & Creators
+								</p>
+								<h3 class="text-lg font-semibold text-slate-900">{template.data.title}</h3>
+								<p class="text-sm text-slate-600">{template.data.subtitle}</p>
+							</div>
+							<div class="text-right">
+								<span class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">
+									New
+								</span>
+								<p class="mt-2 text-sm font-semibold text-slate-900">$49</p>
+							</div>
+						</div>
+						<div class="grid gap-4 bg-slate-50/70 px-5 pb-5 pt-4 sm:grid-cols-3">
+							<div class="sm:col-span-2">
+								<div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+									<img
+										src={`/assets/templates/rockpaper/preview-1.png`}
+										loading="lazy"
+										decoding="async"
+										alt={`${template.data.title} primary preview`}
+										class="w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+								</div>
+							</div>
+							<div class="flex flex-col gap-3">
+								<div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+									<img
+										src={`/assets/templates/rockpaper/preview-2.png`}
+										loading="lazy"
+										decoding="async"
+										alt={`${template.data.title} secondary preview`}
+										class="w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+								</div>
+								<ul class="flex flex-wrap gap-2 text-xs text-slate-600">
+									<li class="rounded-full bg-white px-3 py-1 font-semibold text-slate-900 shadow-inner shadow-slate-200">
+										Tailwind 4 ready
+									</li>
+									<li class="rounded-full bg-white px-3 py-1">Responsive blocks</li>
+									<li class="rounded-full bg-white px-3 py-1">Accessible markup</li>
+								</ul>
+							</div>
+						</div>
+						<div class="flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 px-5 py-4">
+							<div class="flex flex-wrap gap-2 text-xs text-slate-500">
+								<span class="rounded-full bg-slate-100 px-3 py-1">Content collections</span>
+								<span class="rounded-full bg-slate-100 px-3 py-1">CMS-ready</span>
+								<span class="rounded-full bg-slate-100 px-3 py-1">SEO structured</span>
+							</div>
+							<div class="flex items-center gap-3">
+								<a
+									href={`/templates/${template.slug}`}
+									class="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:shadow-md">
+									Open template
+								</a>
+								<a
+									href={`/templates/${template.slug}#whats-included`}
+									class="text-sm font-medium text-slate-700 underline decoration-slate-300 decoration-2 underline-offset-4 transition hover:text-slate-900">
+									Documentation
+								</a>
+							</div>
+						</div>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<section class="mx-auto max-w-6xl px-6 pb-16">
+			<div class="rounded-3xl border border-slate-200 bg-gradient-to-r from-slate-900 to-slate-800 px-6 py-10 text-white shadow-xl shadow-slate-900/10 sm:px-10">
+				<div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+					<div class="space-y-4">
+						<p class="text-xs font-semibold uppercase tracking-[0.25em] text-slate-200">Confidence</p>
+						<h3 class="text-2xl font-semibold">Polished handoff, zero JavaScript dependency.</h3>
+						<p class="text-base text-slate-200">
+							Each template ships with semantic HTML, carefully tuned spacing, and measured motion using
+							pure CSS. Keep pages light, accessible, and ready for production without additional
+							tooling.
+						</p>
+						<div class="flex flex-wrap gap-3">
+							<span class="rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-inner shadow-white/10">
+								Performance-first layouts
+							</span>
+							<span class="rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-inner shadow-white/10">
+								WCAG-aware contrast
+							</span>
+							<span class="rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-inner shadow-white/10">
+								No client frameworks
+							</span>
+						</div>
+					</div>
+					<div class="grid gap-4 sm:grid-cols-2">
+						<div class="rounded-2xl border border-white/15 bg-white/5 p-4">
+							<h4 class="text-lg font-semibold text-white">Support</h4>
+							<p class="mt-2 text-sm text-slate-200">Layered files, documentation, and examples to adapt quickly.</p>
+						</div>
+						<div class="rounded-2xl border border-white/15 bg-white/5 p-4">
+							<h4 class="text-lg font-semibold text-white">Content-first</h4>
+							<p class="mt-2 text-sm text-slate-200">Ready-made blocks for hero, detail, FAQ, and pricing flows.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
