@@ -4,6 +4,7 @@ subtitle: Calm, editorial design system for modern interior studios.
 heroScreenshot: /templates/rock-paper/rock-paper2x.jpg
 subPreview: /templates/rock-paper/preview-2.png
 templateType: AGENCY TEMPLATE
+purchaseLink: https://shop.mcstech.dev/checkout/buy/e2ceb654-c670-46fd-be71-f9235f970a99
 badge: Fresh Deno + TailwindCSS
 stack: Fresh Deno v2.2.0
 styles: TailwindCSS v4.2

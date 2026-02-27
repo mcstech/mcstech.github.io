@@ -11,6 +11,7 @@ const templates = defineCollection({
     heroScreenshot: z.string(),
     subPreview: z.string().optional(),
     templateType: z.string(),
+    purchaseLink: z.string(),
   }),
 });
 
