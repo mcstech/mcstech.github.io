@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://mcstech.dev',
   base: '/',
-
+  output: "static",
   vite: {
     plugins: [tailwindcss()],
   },
